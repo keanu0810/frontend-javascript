@@ -7,7 +7,7 @@
   </head>
   <body>
     <div>
-      이름 : <input type="text" id="user_name" /><br /> 
+      이름 : <input type="text" id="user_name" /><br />
       이메일<input type="email" id="user_email" /><br />
       비밀번호 : <input type="password" id="user_pw" /><br />
       비밀번호 확인 : <input type="password" id="user_pw_confirm" /><br />
@@ -17,33 +17,36 @@
     </div>
     <script>
       const 이름값 = document.getElementById("user_name");
-      const 이메일값 = document.getElementById("user_email");  
+      const 이메일값 = document.getElementById("user_email");
       const 비밀번호값 = document.getElementById("user_pw");
       const 비밀번호확인값 = document.getElementById("user_pw_confirm");
 
-      function 이름이메일확인(){
+      function 이름이메일확인() {
         const 이름 = 이름값.value;
         const 이메일 = 이메일값.value;
         const 비밀번호 = 비밀번호값.value;
       }
-      
 
-        if(이름 == '동그라미' && 이메일 == 'noe@kh.kh' && 비밀번호 == "round123"){
-          alert("이름 이메일 비밀번호가 일치합니다.");
-        } else {
+      if (
+        이름 == "동그라미" &&
+        이메일 == "noe@kh.kh" &&
+        비밀번호 == "round123"
+      ) {
+        alert("이름 이메일 비밀번호가 일치합니다.");
+      } else {
         alert("이름 이메일 비밀번호가 일치하지 않습니다.");
       }
-    
-    function 비밀번호일치여부(){
-        const pw =비밀번호값.value;
+
+      function 비밀번호일치여부() {
+        const pw = 비밀번호값.value;
         const pw_confirm = 비밀번호확인값.value;
 
         if (pw == pw_confirm) {
-            alert("비밀번호가 일치합니다.")
-        } else{
-            alert("비밀번호가 일치하지 않습니다.")
+          alert("비밀번호가 일치합니다.");
+        } else {
+          alert("비밀번호가 일치하지 않습니다.");
         }
-    }
+      }
     </script>
 
     이름 동그라미 이메일 one@kh.kh round123 id=user_name id=user_email =user_pw
