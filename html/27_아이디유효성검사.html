@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>아이디 유효성 검사</title>
+    <style>
+        .check{
+            color: green;
+
+        }
+
+    </style>
+</head>
+<body>
+    <!--
+        -이름 한글 2~5 (단모음, 단자음 제외)
+    -->
+    <h2>회원가입</h2>
+    <form action="#" name="singnupForm">
+        <h3>아이디</h3>
+        <input type="text" class="signup-input" id="inputName" neme="user_name">
+        <br>
+        <span class="input-result">한글2~5자(단모음, 단자음 제외)</span>
+    </form>
+    <script>
+        /*유효성 여부를 체크해두는 객체 생성*/
+        const checkList = {
+            "inputID" : false
+        }
+        const inputName = document.querySelector("#inputID");
+        inputName.addEventListener("input", e =>{
+            //            e(input) .target = 이벤트가 발생한 태그(버튼, 입력 필드 등)을 가리킴
+            //            value = 이벤트가 발생한 태그의 값을 가져오기.
+            const value = e.target.value; // 동그라미
+            //      Sibling(형제 자매) = borther sister
+            //  <input> <br> <span class="input-result">
+            const span = e.target.nextElementSibling.nextElementSibling;
+
+            //만약에 입력이 아무것도 안되어있으면 입력x
+            if(value.trim().length == 0){
+                span.textContent = "영어 2~5(단모음, 단자음 제외)";
+                span.classList.remove("check","error");
+                e.target.value = "";
+                checkList["inputID"] = false
+                return;
+            }
+            /*한글 이름을 위한 정규식 검사*/
+            //  /^ 정규식 시작  
+            //  [가-힇] 한글 사용가능
+            //  {2,5} 2~5 글자 까지만 작성 가능
+            //  $ 정규식 종료
+
+            const 아이디정규식 =/^[A-Za-zo-09]{6,16}$/;
+
+            //만약에 한글이름을 제대로 작성했을 경우
+            if(아이디정규식.test(value)){
+                span.textContent="유효한 아이디의 형식입니다.";
+                span.classList.add("check");
+                span.classList.remove("error");
+                checkList["inputID"] = true;
+            } else {
+                span.textContent="유효하지 않은 아이디의 형식입니다.";
+                span.classList.add("error");
+                span.classList.remove("check");
+                checkList["inputID"] = false;
+            }
+
+
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>생년월일 유효성 검사</title>
+    <style>
+        .check{
+            color: green;
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>주민</h2>
+    <form action="#" name="singnupForm">
+        <h3>생년월일</h3>
+        <input type="text" class="signup-input" id="inputYears" neme="user_Years">
+        <br>
+        <span class="input-result">숫자 6자리입력</span>
+    </form>
+    <script>
+        
+        const checkList = {
+            "inputYears" : false
+   
+            
+        }
+        const inputYears = document.querySelector("#inputYears");
+        inputYears.addEventListener("input", e =>{
+
+            const value = e.target.value;
+      
+            const span = e.target.nextElementSibling.nextElementSibling;
+
+           
+            if(value.trim().length == 0){
+                span.textContent = "영어,숫자 8~20글자사이";
+                span.classList.remove("check","error");
+                e.target.value = "";
+                checkList["inputYears"] = false
+                return;
+            }
+        
+            const burthdatrRegex =/^(19|20)\d{2}-(0[1`9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+
+        
+            if(burthdatrRegex.test(value)){
+                span.textContent="유효한 생년월일 입니다.";
+                span.classList.add("check");
+                span.classList.remove("error");
+                checkList["inputYears"] = true;
+            } else {
+                span.textContent="유효하지 않은 생년월일 입니다.";
+                span.classList.add("error");
+                span.classList.remove("check");
+                checkList["inputYears"] = false;
+            }
+
+
+    });
+    </script>
+</body>
+</html>
