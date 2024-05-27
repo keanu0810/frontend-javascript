@@ -33,7 +33,7 @@
         </pre>
 
         <div class="progress">
-            <div id="프로그래스바" class="progress-bar" role="progressbar" style="width:  0%;" aria-valuenow="0" aria-valuemax="0%"></div>
+            <div id="프로그래스바" class="progress-bar" role="progressbar" style="width:  0%;" aria-valuenow="0" aria-valuemax="100%"></div>
         </div>
         <button id="시작버튼" class="btn btn-primary" onclick="클릭하기()">클릭하기</button>
     </div>
@@ -55,10 +55,11 @@
                     진행상황확인하기++;
                     프로그래스바.css('width', 진행상황확인하기 + "%");
                     프로그래스바.attr('aria-valuenow',진행상황확인하기);
-                    프로그래스바.trxt(진행상황확인하기 + '%');
+                    프로그래스바.trxt(진행상황확인하기 + '%');//text 변경된 글자를 보기위해 text 변경
                 }
-            },진행할시간설정)
-        }
+          
+        },100);
+    }
     </script>
 </body>
 <!--프로그래스바 전용 script 작성하기-->
